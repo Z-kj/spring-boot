@@ -1,0 +1,44 @@
+server:
+  port: 6111
+
+spring:
+  data:
+  datasource:
+    url: jdbc:mysql://192.168.1.172:3306/senergy?useUnicode=true&characterEncoding=UTF-8
+    username: icharge
+    password: icharge
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      stat-view-servlet:
+        allow: true
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+
+  redis:
+    database: 0
+    host: 192.168.1.101
+    port: 6379
+    password:
+    timeout: 0
+    pool:
+      max-active: 8
+      max-idle: 8
+      min-idle: 0
+
+#mybatis
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  typeAliasesPackage: com.example.demo.entity
+  global-config:
+    id-type: 2
+    field-strategy: 1
+    db-column-underline: true
+    refresh-mapper: true
+    logic-delete-value: 0
+    logic-not-delete-value: 1
+    sql-injector: com.baomidou.mybatisplus.mapper.LogicSqlInjector
+    sql-parser-cache: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
